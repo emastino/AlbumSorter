@@ -1,0 +1,88 @@
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    background-image: url('img/WalterLogo.JPG');
+    color: #000000;
+    text-align: center;
+}
+h2 {
+    margin-bottom: 20px;
+    font-size: 2.0em;
+    font-style: italic;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: whitesmoke;
+}
+.sortable-list {
+    list-style: none;
+    padding: 0;
+    width: 350px;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.0);
+}
+.sortable-item {
+    padding: 10px 6px;
+    margin: 4px 0;
+    background: rgba(255, 255, 255, 1.0);
+    border-radius: 15px;
+    font-size: 0.7em;
+    color: #333;
+    font-weight: bold;
+    cursor: grab;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background 0.2s, transform 0.2s;
+}
+.sortable-item:hover {
+    background: #e8f0ff;
+    transform: scale(1.03);
+    /* display: inline-block; */
+}
+.dragging {
+    opacity: 0.7;
+    transform: rotate(-2deg);
+}
+.over {
+    border: 2px dashed #ff8c42;
+    background: #fff3e0;
+}
+.control-panel-column {
+width: 200px;
+margin: 0 auto;
+display: inline;
+
+}
+
+.control-panel { 
+width: 200px;
+margin: 0 auto;
+display: inline;
+}
+
+#resort-button {
+    background-color: rgba(255, 255, 255, 1.0); 
+    border: none;
+    color: black;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 15px;
+}
+
+#playlist li a {
+    color: black;
+    text-decoration: none;
+}
+
+#playlist .current-song{
+    background: rgba(150, 150, 150, 1.0);
+}
+
+#audioPlayer{
+    width: 450px;
+    height: 30px;
+    padding-bottom: 7.5px;
+}

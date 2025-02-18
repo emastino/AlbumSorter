@@ -1,0 +1,133 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Pottery Drizzle Album Sorter</title>
+    <link rel="icon"  href="img/WalterLogo.JPG">
+  </head>
+
+<!--  HTML Code -->
+  <body>
+      <h2>Pottery Drizzle Album Sorter</h2>
+
+      <div id="audio-controls-panel">
+        <audio src="" controls="controls" id="audioPlayer">
+          Your browser does not support the HTML5 Audio Tag.
+        </audio>
+
+        <!-- <button id="resort-button" type="button"> Resort Album </button> -->
+      </div>
+      
+
+
+      <!-- Song List Starts Here  -->
+    <ul id="playlist" class="sortable-list">
+
+      <li  class="sortable-item current-song" draggable="true">
+        <a href="audio/Destino.wav" draggable="false"> Destino </a>
+      </li>
+
+      <li  class="sortable-item" draggable="true">
+        <a href="audio/Glasgow Operating System - GOS.wav" draggable="false"> Glasgow Operating System - GOS </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Emotionally Sensual - Central or Sexual.wav" draggable="false"> Emotionally Sensual Central/Sexual </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Phantom 8.wav" draggable="false"> Phantom 8 </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Defense.wav" draggable="false"> Defense </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/ravine14-PD.wav" draggable="false"> ravine14-PD </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Suerte.wav" draggable="false"> Suerte </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Strip for the Pope.wav" draggable="false"> Strip for the Pope </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/El Payaso Lalín.wav" draggable="false"> El Payaso Lalín </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Swift Justice.wav" draggable="false"> Swift Justice </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Dream Force of Chakal.wav" draggable="false"> Dream Force of Chakal </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Hell Inbound.wav" draggable="false"> Hell Inbound </a>
+      </li>
+
+      <li class="sortable-item" draggable="true">
+        <a href="audio/Midwife’s Delight.wav" draggable="false"> Midwife’s Delight </a>
+      </li>
+
+      <li  class="sortable-item" draggable="true">
+        <a href="audio/Hephaestus.wav" draggable="false"> Hephaestus </a>
+      </li>
+
+      <li  class="sortable-item" draggable="true">
+        <a href="audio/Digital Fusion.wav" draggable="false"> Digital Fusion </a>
+      </li>
+      
+      <li  class="sortable-item" draggable="true">
+        <a href="audio/Jupiter V.wav" draggable="false"> Jupiter V </a>
+      </li>
+
+    </ul>
+
+
+
+      <!-- Javascript -->
+      <script src="myscript.js"></script>
+      <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+      
+      <script>
+          audioPlayer();
+          function audioPlayer(){
+            var currentSong = 0;
+            $("#audioPlayer")[0].src = $("#playlist li a")[0];
+
+            $("#playlist li a").click(
+              function(e){
+                e.preventDefault();
+                $("#audioPlayer")[0].src = this;
+                $("#audioPlayer")[0].play();
+                $("#playlist li").removeClass("current-song");
+                currentSong = $(this).parent().index();
+                $(this).parent().addClass("current-song");
+              }
+            );
+
+            $("#audioPlayer")[0].addEventListener("ended", function(){
+                // alert("Song is DONE!");
+                currentSong++;
+                if(currentSong == $("#playlist li a").length)
+                  currentSong = 0;
+                $("#playlist li").removeClass("current-song");
+                // $("#playlist li:eq"+currentSong+")").addClass("current-song");
+                $("#playlist li").eq(currentSong).addClass("current-song");
+                $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+                $("#audioPlayer")[0].play();
+              }
+            );
+          }
+
+      </script>
+
+    
+
+  </body>
+</html>
