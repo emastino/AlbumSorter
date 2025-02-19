@@ -1,4 +1,6 @@
-
+// var script = document.createElement('script');
+// script.src = 'https://code.jquery.com/jquery-2.2.0.js'; // Check https://jquery.com/ for the current version
+// document.getElementsByTagName('head')[0].appendChild(script);
 
 
 const list = document.querySelector('.sortable-list');
@@ -46,4 +48,35 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-        
+var audio = document.getElementById("audioPlayer");
+// var audioVolume = audio.volume;
+audio.volume = 0.5;
+
+audioPlayer();
+function audioPlayer(){
+    var currentSong = 0;
+    $("#audioPlayer")[0].src = $("#playlist li a")[0];
+
+    $("#playlist li a").click(
+        function(e){
+        e.preventDefault();
+        $("#audioPlayer")[0].src = this;
+        $("#audioPlayer")[0].play();
+        $("#playlist li").removeClass("current-song");
+        currentSong = $(this).parent().index();
+        $(this).parent().addClass("current-song");
+        }
+    );
+
+    $("#audioPlayer")[0].addEventListener("ended", function(){
+        currentSong++;
+        if(currentSong == $("#playlist li a").length)
+            currentSong = 0;
+        $("#playlist li").removeClass("current-song");
+        // $("#playlist li:eq"+currentSong+")").addClass("current-song");
+        $("#playlist li").eq(currentSong).addClass("current-song");
+        $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+        $("#audioPlayer")[0].play();
+        }
+    );
+}
