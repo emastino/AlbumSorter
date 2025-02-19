@@ -50,7 +50,7 @@ function getDragAfterElement(container, y) {
 
 var audio = document.getElementById("audioPlayer");
 // var audioVolume = audio.volume;
-audio.volume = 0.5;
+audio.volume = 0.15;
 
 audioPlayer();
 function audioPlayer(){
@@ -69,9 +69,20 @@ function audioPlayer(){
     );
 
     $("#audioPlayer")[0].addEventListener("ended", function(){
+        // alert($("#playlist li a").eq(currentSong).text());
+        // if($("#playlist li a").eq(currentSong).text() == $("#playlist li a").eq(currentSong).text())
+        
+        currentSong = $("#playlist li.current-song").index();
+
         currentSong++;
-        if(currentSong == $("#playlist li a").length)
+
+        // alert($(this).parent().index() + 1);
+        if(currentSong == $("#playlist li a").length){
             currentSong = 0;
+        }
+    
+            
+
         $("#playlist li").removeClass("current-song");
         // $("#playlist li:eq"+currentSong+")").addClass("current-song");
         $("#playlist li").eq(currentSong).addClass("current-song");
