@@ -50,7 +50,7 @@ function getDragAfterElement(container, y) {
 
 var audio = document.getElementById("audioPlayer");
 // var audioVolume = audio.volume;
-audio.volume = 0.15;
+audio.volume = 0.25;
 
 audioPlayer();
 function audioPlayer(){
@@ -79,6 +79,54 @@ function audioPlayer(){
         // alert($(this).parent().index() + 1);
         if(currentSong == $("#playlist li a").length){
             currentSong = 0;
+        }
+    
+            
+
+        $("#playlist li").removeClass("current-song");
+        // $("#playlist li:eq"+currentSong+")").addClass("current-song");
+        $("#playlist li").eq(currentSong).addClass("current-song");
+        $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+        $("#audioPlayer")[0].play();
+        }
+    );
+
+    $("#forward-button").click(
+        function(e){
+        // alert($("#playlist li a").eq(currentSong).text());
+        // if($("#playlist li a").eq(currentSong).text() == $("#playlist li a").eq(currentSong).text())
+        
+        currentSong = $("#playlist li.current-song").index();
+
+        currentSong++;
+
+        // alert($(this).parent().index() + 1);
+        if(currentSong == $("#playlist li a").length){
+            currentSong = 0;
+        }
+    
+            
+
+        $("#playlist li").removeClass("current-song");
+        // $("#playlist li:eq"+currentSong+")").addClass("current-song");
+        $("#playlist li").eq(currentSong).addClass("current-song");
+        $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
+        $("#audioPlayer")[0].play();
+        }
+    );
+
+    $("#back-button").click(
+        function(e){
+        // alert($("#playlist li a").eq(currentSong).text());
+        // if($("#playlist li a").eq(currentSong).text() == $("#playlist li a").eq(currentSong).text())
+        
+        currentSong = $("#playlist li.current-song").index();
+
+        currentSong--;
+
+        // alert($(this).parent().index() + 1);
+        if(currentSong == -1){
+            currentSong = $("#playlist li a").length-1;
         }
     
             

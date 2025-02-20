@@ -3,9 +3,32 @@ body {
     font-family: 'Poppins', sans-serif;
     padding: 10px;
     background-image: url('img/WalterLogo.JPG');
+    /* background-size: 1px 125px; */
+    background-position: top left;
+    /* animation: bgScroll 20s linear infinite; */
     color: #000000;
     text-align: center;
 }
+
+@keyframes mymove {
+    50% {background-position: center;}
+  }
+@keyframes bgScroll {
+    0% {
+      background-position : 0px 0px;
+      background-size: 300px 250px
+    }
+    50% {
+      background-position : 0px -808px;
+      background-size: 30px 25px
+    }
+
+    100% {
+        background-position : 0px -0px;
+        background-size: 300px 250px
+      }
+}
+
 h2 {
     margin-bottom: 20px;
     font-size: 2.0em;
@@ -78,11 +101,30 @@ display: inline;
 }
 
 #playlist .current-song{
-    background: rgba(150, 150, 150, 1.0);
+    background: rgb(244, 196, 65);
+    border-width: 5px;
+    border-color: #fe9204;
+    border-style: solid;
+
 }
 
 #audioPlayer{
     width: 450px;
     height: 30px;
     padding-bottom: 7.5px;
+}
+
+.control-button {
+    /*  */
+    background-color: rgba(125, 125, 125, 0.95);  
+    width: 173px;
+    border: none;
+    color: rgba(25, 25, 25, 0.95);
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.2s;
 }
